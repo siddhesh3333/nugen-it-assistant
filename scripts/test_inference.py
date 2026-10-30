@@ -62,7 +62,7 @@ try:
             {
                 "role": "system",
                 "content": (
-                    "You are the Northstar Example Company IT Support Assistant. "
+                    "You are the Northsas Example Company IT Support Assistant. "
                     "Use only information supported by the IT support knowledge learned "
                     "during domain alignment. Do not invent policies, contact details, "
                     "or procedures. If the information is not available, say so clearly."
@@ -72,7 +72,7 @@ try:
                 "role": "user",
                 "content": (
                     "What should an employee do if they forget their account password? "
-                    "Only state steps supported by the Northstar support guidance."
+                    "Only state steps supported by the Northsas support guidance."
                 ),
             },
         ],

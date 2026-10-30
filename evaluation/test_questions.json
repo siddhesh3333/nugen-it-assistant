@@ -2,12 +2,12 @@
   {
     "id": "password_reset",
     "category": "Account access",
-    "question": "I forgot my account password. What should I do according to the Northstar IT support guidance?"
+    "question": "I forgot my account password. What should I do according to the Northsas IT support guidance?"
   },
   {
     "id": "mfa_device",
     "category": "Account security",
-    "question": "I lost access to my MFA or authenticator device. What does the Northstar guidance say I should do?"
+    "question": "I lost access to my MFA or authenticator device. What does the Northsas guidance say I should do?"
   },
   {
     "id": "vpn_certificate",
@@ -22,6 +22,6 @@
   {
     "id": "unknown_contact",
     "category": "Unknown information / abstention",
-    "question": "What is the Northstar IT helpdesk phone number? Only answer if that number is explicitly provided in the IT support guidance."
+    "question": "What is the Northsas IT helpdesk phone number? Only answer if that number is explicitly provided in the IT support guidance."
   }
 ]

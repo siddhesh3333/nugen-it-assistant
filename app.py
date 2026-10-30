@@ -1,4 +1,4 @@
-"""Northstar IT Support Assistant powered by a deployed Nugen aligned model."""
+"""Northsas IT Support Assistant powered by a deployed Nugen aligned model."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ API_KEY = os.getenv("NUGEN_API_KEY", "").strip()
 API_BASE_URL = os.getenv("NUGEN_API_BASE_URL", "https://api.nugen.in/api/v3").strip()
 DEFAULT_MODEL_ID = os.getenv("NUGEN_MODEL_ID", "").strip()
 
-SYSTEM_PROMPT = """You are the Northstar Example Company IT Support Assistant.
+SYSTEM_PROMPT = """You are the Northsas Example Company IT Support Assistant.
 
 Help employees with account access, password support, VPN, devices, software,
 and IT service tickets.
@@ -44,12 +44,12 @@ at query time.
 
 
 st.set_page_config(
-    page_title="Northstar IT Support Assistant",
+    page_title="Northsas IT Support Assistant",
     page_icon="🛠️",
     layout="wide",
 )
 
-st.title("🛠️ Northstar IT Support Assistant")
+st.title("🛠️ Northsas IT Support Assistant")
 st.caption("An IT help assistant powered by your deployed Nugen domain-aligned model.")
 
 with st.sidebar:
@@ -119,7 +119,7 @@ with st.sidebar:
     st.divider()
     st.subheader("How to use")
     st.markdown(
-        "Ask a question about the Northstar IT support guidance. "
+        "Ask a question about the Northsas IT support guidance. "
         "Do not enter passwords, OTPs, or other secrets."
     )
     if st.button("Clear conversation", use_container_width=True):
@@ -184,7 +184,7 @@ if st.session_state.last_usage:
 
 if st.session_state.messages:
     export_data = {
-        "application": "Northstar IT Support Assistant",
+        "application": "Northsas IT Support Assistant",
         "exported_at_utc": datetime.now(timezone.utc).isoformat(),
         "model_id": st.session_state.get("selected_model_id"),
         "messages": st.session_state.messages,
@@ -192,12 +192,12 @@ if st.session_state.messages:
     st.download_button(
         "Download conversation (JSON)",
         data=json.dumps(export_data, indent=2, ensure_ascii=False),
-        file_name="northstar_it_support_conversation.json",
+        file_name="northsas_it_support_conversation.json",
         mime="application/json",
     )
 
 st.divider()
 st.caption(
     "Important: model alignment is not the same as retrieval-augmented generation. "
-    "Check policy-specific answers against the original Northstar documents before relying on them."
+    "Check policy-specific answers against the original Northsas documents before relying on them."
 )

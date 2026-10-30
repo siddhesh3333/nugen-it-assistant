@@ -1,4 +1,4 @@
-# Northstar IT Support Assistant (Nugen + Streamlit)
+# Northsas IT Support Assistant (Nugen + Streamlit)
 
 A small Streamlit application that calls a **deployed Nugen domain-aligned model** for IT support questions.
 
@@ -94,7 +94,7 @@ Run the five-question evaluation set:
 python scripts/run_evaluation.py
 ```
 
-This sends five inference requests and saves answers to `evaluation/results.csv`. It does not automatically determine factual correctness. Open the CSV and review each answer against the original uploaded Northstar documents. Fill the manual review columns:
+This sends five inference requests and saves answers to `evaluation/results.csv`. It does not automatically determine factual correctness. Open the CSV and review each answer against the original uploaded Northsas documents. Fill the manual review columns:
 
 - `policy_supported (fill manually)`
 - `relevant (fill manually)`
