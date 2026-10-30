@@ -38,17 +38,8 @@ Since this is a demonstration project, I created two fictional IT support docume
 
 These documents were used as the domain-specific inputs for the alignment workflow on the Nugen platform.
 
-### Document 1: IT Account Access and Password Support Guide
 
-This document covers:
-
-- Account access procedures.
-- Password reset instructions.
-- Password-related troubleshooting.
-- Account lockout support.
-- IT support escalation guidelines.
-
-### Document 2: VPN, Device, Software, and IT Ticket Guide
+### Document 1: VPN, Device, Software, and IT Ticket Guide
 
 This document covers:
 
@@ -61,7 +52,7 @@ This document covers:
 **Dataset clarification:**
 
 - Company name: Northsas Example Company (fictional).
-- Documents: Two self-created fictional IT support documents.
+- Documents: self-created fictional IT support documents.
 - Purpose: Demonstrating domain alignment using Nugen Intelligence.
 - These documents do not contain actual company policies or confidential organizational information.
 
@@ -82,8 +73,8 @@ The domain alignment workflow was performed using the Nugen Intelligence platfor
 The following steps were completed:
 
 1. Created an alignment project on the Nugen platform.
-2. Prepared two fictional IT support documents for the Northsas Example Company use case.
-3. Uploaded both documents to the platform.
+2. Prepared  fictional IT support documents for the Northsas Example Company use case.
+3. Uploaded the documents to the platform.
 4. Verified that the uploaded documents were successfully processed and marked as ready.
 5. Selected `Qwen/Qwen2.5-1.5B-Instruct` as the base model.
 6. Configured and executed the domain alignment process.
@@ -179,7 +170,7 @@ The application uses environment variables to manage the API key and deployed mo
 
 ## 7. Model Evaluation and Testing
 
-After deployment, I tested the aligned model with questions related to the two uploaded IT support documents.
+After deployment, I tested the aligned model with questions related to the  uploaded IT support documents.
 
 The objective was to observe whether the model could generate relevant and useful responses for the selected IT support use case.
 
@@ -204,20 +195,10 @@ The responses were reviewed based on:
 - Ability to handle different IT support scenarios.
 - Handling of questions outside the supported domain.
 
-### Evaluation Results
-
-Insert the actual results from your testing here.
-
-| Metric | Result |
-|---|---|
-| Total questions tested | [Enter actual count] |
-| Relevant responses | [Enter actual count] |
-| Partially relevant responses | [Enter actual count] |
-| Incorrect or unsupported responses | [Enter actual count] |
 
 ### Limitations
 
-- The project uses only two fictional IT support documents.
+- The project uses only the  fictional IT support documents.
 - The evaluation dataset is relatively small.
 - Generated responses may contain inaccurate or unsupported information.
 - Model alignment does not guarantee that every answer will exactly follow the uploaded documents.
@@ -241,10 +222,6 @@ To make the deployed aligned model accessible through a simple interface, I deve
 Add screenshots of the actual working application to the repository.
 
 **Streamlit application interface:**
-
-![Northsas IT Support Assistant](screenshots/streamlit_app.png)
-
-Recommended additional screenshots:
 
 1. Streamlit home page.
 2. User submitting an IT support question.
@@ -302,8 +279,6 @@ Replace the placeholder values with your actual Nugen API credentials and deploy
 streamlit run app.py
 ```
 
-The application will be accessible through the local URL provided by Streamlit.
-
 ## 9. Project Structure
 
 ```text
@@ -359,7 +334,7 @@ This project was developed as part of the technical assignment provided by **Nug
 
 It demonstrates an end-to-end workflow for exploring domain alignment and building an application around a deployed language model.
 
-Using two fictional IT support documents created for Northsas Example Company, I performed domain alignment with `Qwen/Qwen2.5-1.5B-Instruct`, deployed the aligned model through Nugen Intelligence, integrated it into a Python application using the Nugen inference API, and developed a Streamlit interface for interactive testing.
+Using fictional IT support documents created for Northsas Example Company, I performed domain alignment with `Qwen/Qwen2.5-1.5B-Instruct`, deployed the aligned model through Nugen Intelligence, integrated it into a Python application using the Nugen inference API, and developed a Streamlit interface for interactive testing.
 
 Through this assignment, I gained practical experience with:
 
