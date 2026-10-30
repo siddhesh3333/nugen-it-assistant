@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">PolicyLens workflow</title>
+  <desc id="desc">Official policy, customer question, and draft AI reply are checked by an LLM to produce a review result and safer suggested reply.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f3ff"/><stop offset="1" stop-color="#eef6ff"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6d5dfc"/><stop offset="1" stop-color="#2878d0"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#65708a"/></marker>
+    <style>
+      .heading{font:700 25px Arial,sans-serif;fill:#17233b}.label{font:700 19px Arial,sans-serif;fill:#24324d}.body{font:16px Arial,sans-serif;fill:#485875}.small{font:14px Arial,sans-serif;fill:#586782}.card{fill:#fff;stroke:#d8deeb;stroke-width:2}.step{fill:#f7f8fc;stroke:#d4dbea;stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1200" height="430" rx="24" fill="url(#bg)"/>
+  <text x="52" y="55" class="heading">How PolicyLens works</text>
+  <text x="52" y="82" class="small">A simple policy-grounding check for AI-generated customer support replies</text>
+
+  <rect x="48" y="125" width="260" height="76" rx="14" class="card"/>
+  <circle cx="77" cy="163" r="17" fill="#e9e6ff"/><text x="77" y="169" text-anchor="middle" font-family="Arial" font-weight="700" font-size="17" fill="#5b4ae8">1</text>
+  <text x="107" y="157" class="label">Official policy</text><text x="107" y="181" class="small">Approved company rules</text>
+
+  <rect x="48" y="218" width="260" height="76" rx="14" class="card"/>
+  <circle cx="77" cy="256" r="17" fill="#e9e6ff"/><text x="77" y="262" text-anchor="middle" font-family="Arial" font-weight="700" font-size="17" fill="#5b4ae8">2</text>
+  <text x="107" y="250" class="label">Customer question</text><text x="107" y="274" class="small">What the customer asked</text>
+
+  <rect x="48" y="311" width="260" height="76" rx="14" class="card"/>
+  <circle cx="77" cy="349" r="17" fill="#e9e6ff"/><text x="77" y="355" text-anchor="middle" font-family="Arial" font-weight="700" font-size="17" fill="#5b4ae8">3</text>
+  <text x="107" y="343" class="label">Draft AI reply</text><text x="107" y="367" class="small">Response to be checked</text>
+
+  <path d="M308 163 H385 V255 H430 M308 256 H430 M308 349 H385 V255" fill="none" stroke="#65708a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="435" y="177" width="300" height="155" rx="20" fill="#fff" stroke="url(#accent)" stroke-width="3"/>
+  <circle cx="585" cy="218" r="22" fill="#eeeaff"/><path d="M574 218 h22 M585 207 v22" stroke="#5b4ae8" stroke-width="3" stroke-linecap="round"/>
+  <text x="585" y="265" text-anchor="middle" class="label">LLM evaluation</text>
+  <text x="585" y="291" text-anchor="middle" class="small">Compare the reply with the policy</text>
+  <text x="585" y="313" text-anchor="middle" class="small">and identify claims to review</text>
+
+  <path d="M735 255 H805" fill="none" stroke="#65708a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="815" y="125" width="335" height="112" rx="16" class="step"/>
+  <text x="840" y="160" class="label">Review result</text>
+  <rect x="840" y="179" width="91" height="30" rx="15" fill="#e4f5ea"/><text x="885" y="199" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#237444">Supported</text>
+  <rect x="941" y="179" width="105" height="30" rx="15" fill="#fff1d7"/><text x="993" y="199" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#895b12">Needs review</text>
+  <rect x="1056" y="179" width="79" height="30" rx="15" fill="#fde8e8"/><text x="1095" y="199" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#a63232">Conflict</text>
+
+  <path d="M982 237 V278" fill="none" stroke="#65708a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="815" y="291" width="335" height="96" rx="16" class="card"/>
+  <text x="840" y="326" class="label">Safer suggested reply</text>
+  <text x="840" y="352" class="body">A draft aligned with the supplied policy</text>
+  <text x="840" y="374" class="small">Human review before sending</text>
+</svg>
