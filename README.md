@@ -1,233 +1,355 @@
-# PolicyLens — AI-Powered Customer Support Reply Checker
+# Domain-Aligned IT Support Assistant Using Nugen Intelligence
 
-**PolicyLens checks whether an AI-generated customer-support reply is consistent with a company's official policy. It highlights possible contradictions and unsupported claims, then suggests a safer response.**
+An end-to-end domain alignment project developed as part of a technical assignment provided by **Nugen Intelligence**. **[Access the Live Application Here](https://northsas.streamlit.app/)**
+ 
+The project demonstrates how a base language model can be adapted for a specific business domain using company-specific documentation, deployed through the Nugen platform, and integrated into a Streamlit application for interactive inference.
 
-<p align="center">
-  <a href="https://cynbit.streamlit.app/">
-    <strong>🚀 Try the live Streamlit application</strong>
-  </a>
-</p>
+> **Important clarification:** Nugen Intelligence is the actual company that provided this technical assignment and its platform for completing the task. Northsas Example Company is a fictional company created exclusively for this demonstration. It does not represent a real organization or an actual Nugen customer.
 
----
+## 1. Problem Statement
 
-## 1. Project at a glance
+As part of the technical assignment provided by Nugen Intelligence, the objective was to explore its domain alignment capabilities and build a working application using an aligned language model.
 
-Customer-support teams increasingly use AI assistants to draft replies. A response can sound confident while still promising something the company's policy does not allow—for example, offering a 30-day return window when the approved policy allows only 14 days.
+For this demonstration, I selected the IT support domain and created a fictional organization named **Northsas Example Company**.
 
-PolicyLens adds a simple review step: it compares the customer's question and an AI-generated draft with the official policy supplied by the user. It then reports whether the draft appears supported, needs human review, or contradicts the policy.
+In a typical organization, employees may require assistance with:
 
-> **Important:** PolicyLens is a decision-support prototype. It does not guarantee factual correctness or automatically approve customer messages. A person should review the result before using it.
 
-## 2. Application preview
+- VPN connectivity problems.
+- Device troubleshooting.
+- Software installation requests.
+- IT support tickets and escalation procedures.
 
-### Workflow overview
+The objective was to build an AI-powered IT Support Assistant that can respond to questions related to these scenarios using the domain-specific information provided in the fictional company's IT support documents.
 
-![PolicyLens workflow: policy, customer question and draft reply are evaluated by an LLM to produce a review and safer reply](assets/policylens-workflow.svg)
+This project demonstrates the complete workflow:
 
-### Streamlit application screenshot
+1. Preparing domain-specific documents.
+2. Uploading documents to Nugen Intelligence.
+3. Performing domain alignment using a selected base model.
+4. Deploying the aligned model.
+5. Connecting to the deployed model through the Nugen inference API.
+6. Building a Streamlit application for user interaction.
+7. Testing and evaluating model responses.
 
-To show the actual application in this section, take a screenshot of the deployed app and add it to the repository at:
+## 2. Dataset and Documentation
 
-`assets/policylens-screenshot.png`
+Since this is a demonstration project, I created two fictional IT support documents for Northsas Example Company.
 
-Then add this Markdown line below (or replace this note with it):
+These documents were used as the domain-specific inputs for the alignment workflow on the Nugen platform.
 
-```markdown
-![PolicyLens Streamlit application](assets/policylens-screenshot.png)
-```
 
-**Screenshot tip:** Capture the app with the input fields and an example result visible. Do not include your Groq API key, personal information, or confidential customer data in the screenshot.
+### Document 1: VPN, Device, Software, and IT Ticket Guide
 
-## 3. How PolicyLens works
+This document covers:
 
-1. **Add the official policy** — paste the approved company rules or guidelines.
-2. **Enter the customer's question** — provide the question that the support assistant is answering.
-3. **Add the AI-generated reply** — paste the draft that needs to be checked.
-4. **Run the evaluation** — PolicyLens sends the supplied text to a Groq-hosted language model with instructions to compare the draft only against the supplied policy.
-5. **Review the result** — the app displays a status, explanation, supported points, claims to check, and a safer suggested reply.
+- VPN connectivity troubleshooting.
+- Device-related support procedures.
+- Software installation requests.
+- Common technical issues.
+- IT ticket submission and escalation procedures.
 
-### Result labels
+**Dataset clarification:**
 
-| Status | Meaning |
+- Company name: Northsas Example Company (fictional).
+- Documents: self-created fictional IT support documents.
+- Purpose: Demonstrating domain alignment using Nugen Intelligence.
+- These documents do not contain actual company policies or confidential organizational information.
+
+## 3. Base Model Selection
+
+The base model selected for this project was:
+
+**Qwen/Qwen2.5-1.5B-Instruct**
+
+This model was used as the foundation for the domain alignment process.
+
+The objective was to adapt the base model toward the IT support use case using the fictional documentation prepared for this assignment.
+
+## 4. Domain Alignment Using Nugen Intelligence
+
+The domain alignment workflow was performed using the Nugen Intelligence platform.
+
+The following steps were completed:
+
+1. Created an alignment project on the Nugen platform.
+2. Prepared  fictional IT support documents for the Northsas Example Company use case.
+3. Uploaded the documents to the platform.
+4. Verified that the uploaded documents were successfully processed and marked as ready.
+5. Selected `Qwen/Qwen2.5-1.5B-Instruct` as the base model.
+6. Configured and executed the domain alignment process.
+7. Waited for the alignment process to complete.
+8. Generated the aligned model for the IT support use case.
+
+This workflow was used to explore how Nugen's domain alignment capabilities can adapt a language model to a specific business domain.
+
+## 5. Model Deployment
+
+After completing the domain alignment process, the resulting aligned model was deployed through Nugen Intelligence.
+
+Deployment workflow:
+
+1. Selected the completed aligned model.
+2. Initiated the model deployment process.
+3. Waited for the deployment status to become `DEPLOYED`.
+4. Retrieved the deployed model information.
+5. Used the deployed model ID for subsequent inference requests.
+
+**Deployment details:**
+
+| Component | Details |
 |---|---|
-| **Supported** | The important claims in the draft appear to be supported by the provided policy. |
-| **Needs review** | The policy does not provide enough information to confidently verify one or more claims. |
-| **Contradiction** | One or more claims in the draft appear to conflict with the provided policy. |
+| Platform | Nugen Intelligence |
+| Base model | Qwen2.5-1.5B-Instruct |
+| Use case | Fictional IT Support Assistant |
+| Deployment status | DEPLOYED |
 
-## 4. Example scenario
+## 6. Inference – Python Integration with Nugen
 
-**Official policy**
+After deployment, I integrated the aligned model into a Python application using the Nugen chat completions API.
 
-- Returns are allowed within 14 days of delivery.
-- Products must be unused and in their original packaging.
-- Approved refunds are processed within 5–7 business days.
+**API endpoint:**
 
-**Customer question**
+`https://api.nugen.in/api/v3/inference/chat/completions`
 
-> I received my headphones 20 days ago. Can I return them and get a refund tomorrow?
+The Python application communicates with the deployed model by sending:
 
-**Draft AI reply**
+- API authentication credentials.
+- The deployed aligned model ID.
+- System instructions.
+- User messages.
 
-> Yes, you can return the headphones within 30 days, even if they have been used. Your refund will arrive tomorrow.
+The model processes the request and returns a generated response, which is displayed in the Streamlit application.
 
-**What PolicyLens checks**
+### Example Python API Integration
 
-The draft's 30-day return window, acceptance of used products, and next-day refund promise should be flagged for review because they do not match the policy above. The exact classification and wording can vary because the assessment is generated by an LLM.
+```python
+import requests
 
-## 5. Features
+API_URL = "https://api.nugen.in/api/v3/inference/chat/completions"
 
-- Checks AI-generated customer-support replies against user-provided policy text.
-- Identifies possible contradictions and claims that lack policy evidence.
-- Returns one of three easy-to-understand review statuses.
-- Suggests an alternative reply that stays within the supplied policy.
-- Provides a simple Streamlit interface for trying the workflow.
-- Allows the user to enter a Groq API key in a masked field in the app rather than hardcoding it in the source code.
-- Validates the structure of the model's JSON response before displaying the evaluation.
-- Includes a sample case and unit tests for the response parsing and input-validation logic.
+headers = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json"
+}
 
-## 6. Technology stack
+payload = {
+    "model": ALIGNED_MODEL_ID,
+    "messages": [
+        {
+            "role": "system",
+            "content": (
+                "You are an IT Support Assistant for the fictional "
+                "Northsas Example Company. Answer IT support "
+                "questions clearly and professionally."
+            )
+        },
+        {
+            "role": "user",
+            "content": "How can I troubleshoot a VPN connection issue?"
+        }
+    ],
+    "temperature": 0.2
+}
 
-| Component | Technology | Purpose |
-|---|---|---|
-| Application language | Python | Input handling and evaluation workflow |
-| User interface | Streamlit | Interactive web application |
-| LLM integration | Groq API | Sends the evaluation request to a hosted language model |
-| Prompt design | System prompt + structured input | Instructs the model to assess the draft against the supplied policy |
-| Output handling | JSON parsing and validation | Checks that the response contains the expected fields |
-| Testing | Python `unittest` | Tests input validation and response parsing |
-| Version control | Git and GitHub | Tracks and shares the source code |
+response = requests.post(
+    API_URL,
+    headers=headers,
+    json=payload,
+    timeout=60
+)
 
-PolicyLens does **not** train a model from scratch. It uses a pretrained language model made available through the Groq API.
+response.raise_for_status()
 
-## 7. Run locally
+result = response.json()
 
-### Prerequisites
-
-- Python 3.10 or later
-- A Groq API key: [Create or manage a key in the Groq Console](https://console.groq.com/keys)
-- Internet access for the application to call the Groq API
-
-### Windows — PowerShell
-
-```powershell
-# 1. Create a virtual environment
-py -m venv .venv
-
-# 2. Activate it
-.\.venv\Scripts\Activate.ps1
-
-# 3. Install dependencies
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-
-# 4. Run the tests
-python -m unittest discover -s tests -v
-
-# 5. Start the application
-streamlit run app.py
+print(result)
 ```
 
-### macOS / Linux
+The application uses environment variables to manage the API key and deployed model ID securely instead of hardcoding credentials in the source code.
+
+## 7. Model Evaluation and Testing
+
+After deployment, I tested the aligned model with questions related to the  uploaded IT support documents.
+
+The objective was to observe whether the model could generate relevant and useful responses for the selected IT support use case.
+
+### Sample Evaluation Questions
+
+| Category | Test Question |
+|---|---|
+| Account Access | How can I reset my password? |
+| Account Security | What should I do if my account is locked? |
+| VPN Support | How can I troubleshoot a VPN connection issue? |
+| Device Support | How do I report a device-related issue? |
+| Software Support | How can I request software installation? |
+| Ticket Management | How do I submit an IT support ticket? |
+
+### Evaluation Criteria
+
+The responses were reviewed based on:
+
+- Relevance to the user's question.
+- Clarity and usefulness of generated answers.
+- Consistency with the intended IT support use case.
+- Ability to handle different IT support scenarios.
+- Handling of questions outside the supported domain.
+
+
+### Limitations
+
+- The project uses only the  fictional IT support documents.
+- The evaluation dataset is relatively small.
+- Generated responses may contain inaccurate or unsupported information.
+- Model alignment does not guarantee that every answer will exactly follow the uploaded documents.
+- The assistant should not replace a human IT support team.
+- A larger dataset and a more comprehensive evaluation framework would be required for production use.
+
+## 8. Streamlit Application
+
+To make the deployed aligned model accessible through a simple interface, I developed a Streamlit web application.
+
+### Application Features
+
+- Interactive chat interface.
+- User-friendly question input.
+- Integration with the deployed Nugen aligned model.
+- Real-time response generation through API requests.
+- Environment-based configuration for API credentials and model information.
+
+### Application Screenshots
+
+Add screenshots of the actual working application to the repository.
+
+**Streamlit application interface:**
+
+1. Streamlit home page.
+2. User submitting an IT support question.
+3. Model-generated response.
+4. Example questions covering different IT support categories.
+
+### Run the Application Locally
+
+**Step 1: Clone the repository**
 
 ```bash
-# 1. Create and activate a virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd Northsas-it-assistant
+```
 
-# 2. Install dependencies
-python -m pip install --upgrade pip
+**Step 2: Create a virtual environment**
+
+For Windows:
+
+```powershell
+python -m venv venv
+venv\Scripts\activate
+```
+
+For Linux/macOS:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+**Step 3: Install dependencies**
+
+```bash
 pip install -r requirements.txt
+```
 
-# 3. Run the tests
-python -m unittest discover -s tests -v
+**Step 4: Configure environment variables**
 
-# 4. Start the application
+Create a `.env` file in the project root:
+
+```env
+NUGEN_API_KEY=your_nugen_api_key
+NUGEN_API_URL=https://api.nugen.in/api/v3/inference/chat/completions
+NUGEN_MODEL_ID=your_deployed_aligned_model_id
+```
+
+Replace the placeholder values with your actual Nugen API credentials and deployed aligned model ID.
+
+**Important:** Never commit your `.env` file or expose your API key in a public repository.
+
+**Step 5: Run the Streamlit application**
+
+```bash
 streamlit run app.py
 ```
 
-After Streamlit starts, open the local URL printed in the terminal. Enter your Groq API key in the **AI settings** section of the sidebar, review the sample input, and click **Check reply**.
-
-If PowerShell does not allow virtual-environment activation, you can run the environment's Python directly:
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m streamlit run app.py
-```
-
-## 8. API key and data handling
-
-- The application asks for the Groq API key in a masked password field in the Streamlit sidebar.
-- The current code does not read the key from environment variables, a `.env` file, or Streamlit secrets.
-- The key is held in the active Streamlit session and is used when the app sends a request to Groq. The code does not intentionally write the key to a project file.
-- Use **Clear API key** to clear the key from the active session.
-- The policy, customer question, and draft reply are sent to Groq as part of the evaluation request. Use fictional or non-confidential data for the public demo.
-- Never commit an actual API key, a real `.env` file, or a screenshot containing credentials to GitHub.
-- The included `.env.example` is documentation only; it contains no secret and is not loaded by the application.
-
-Because the live demo is publicly accessible, do not enter a sensitive or privileged API key unless you are comfortable sending it through the deployed application. For a production multi-user deployment, use proper server-side secret management, authentication, access controls, and privacy review instead of asking end users to provide a shared service key.
-
-## 9. Project structure
+## 9. Project Structure
 
 ```text
-cynbit_policylens_updated/
-├── app.py                         # Streamlit user interface
-├── checker.py                     # Groq request and response validation
-├── requirements.txt               # Python dependencies
-├── .env.example                   # Configuration/security note; no key
-├── .gitignore                     # Excludes local secrets and virtual environments
-├── AI_OPPORTUNITY_REPORT.md       # Business opportunity analysis
-├── TECHNICAL_APPROACH_REPORT.md  # Technical design and implementation approach
-├── TEST_PLAN.md                   # Test plan
-├── sample_data/
-│   └── sample_case.json           # Example policy, question, and draft reply
-├── tests/
-│   └── test_checker.py            # Unit tests
-└── assets/
-    ├── policylens-workflow.svg    # Workflow illustration used in this README
-    └── policylens-screenshot.png  # Add your real app screenshot here
+Northsas-it-assistant/
+│
+├── app.py
+├── requirements.txt
+├── .env.example
+├── .gitignore
+├── README.md
+│
+├── services/
+│   ├── __init__.py
+│   └── nugen_client.py
+│
+├── scripts/
+│   ├── list_models.py
+│   ├── test_inference.py
+│   └── run_evaluation.py
+│
+├── evaluation/
+│   └── test_questions.json
+│
+└── screenshots/
+    └── streamlit_app.png
 ```
 
-## 10. Relevance to Cynbit Technologies
+## 10. Technologies Used
 
-I developed PolicyLens as a candidate project for the **AI/ML Engineer Intern** assessment. Cynbit's public role description highlights building AI chatbots and virtual assistants, prompt engineering for LLMs, document-processing pipelines, and integrating emerging AI/ML technologies. Cynbit's services page also describes autonomous agents, LLM automation, and AI-stack integration.
+| Technology | Purpose |
+|---|---|
+| Python | Application development |
+| Nugen Intelligence | Domain alignment, deployment, and inference platform |
+| Qwen2.5-1.5B-Instruct | Base language model |
+| Streamlit | User interface |
+| Requests | API communication |
+| JSON | API payloads and evaluation questions |
 
-PolicyLens is relevant to that work because it demonstrates a lightweight quality-checking step that could sit alongside an AI assistant or customer-support workflow. It shows practical implementation of:
+## 11. Future Improvements
 
-- Python application development.
-- LLM API integration.
-- Prompt design for a specific business task.
-- Structured model-output validation and error handling.
-- A usable web interface for an AI workflow.
+Some potential improvements for this project include:
 
-This is an independent prototype based on publicly described areas of Cynbit's work. It does not use Cynbit's internal data, and it is not a claim that Cynbit has a confirmed internal requirement for this tool.
+- Expanding the fictional IT support dataset with more detailed documentation.
+- Implementing automated evaluation against expected answers.
+- Adding conversation history.
+- Improving unsupported-question detection.
+- Adding document retrieval and source references for verifiable answers.
+- Evaluating model performance across a larger set of test questions.
 
-**Public references:**
+## 12. Conclusion
 
-- [Cynbit — AI/ML Engineer Intern role](https://www.cynbit.in/careers/ai-ml-engineer-intern)
-- [Cynbit — Services and AI automation](https://www.cynbit.in/services)
+This project was developed as part of the technical assignment provided by **Nugen Intelligence**.
 
-## 11. Limitations and future improvements
+It demonstrates an end-to-end workflow for exploring domain alignment and building an application around a deployed language model.
 
-### Current limitations
+Using fictional IT support documents created for Northsas Example Company, I performed domain alignment with `Qwen/Qwen2.5-1.5B-Instruct`, deployed the aligned model through Nugen Intelligence, integrated it into a Python application using the Nugen inference API, and developed a Streamlit interface for interactive testing.
 
-- LLM evaluations may be incorrect, incomplete, or inconsistent.
-- The result depends on the accuracy and completeness of the policy text supplied by the user.
-- The prototype does not independently verify company policies or external facts.
-- Unit tests validate application logic and response structure; they do not prove that the model's policy judgments are always correct.
-- Human review is required before a customer-facing response is sent.
+Through this assignment, I gained practical experience with:
 
-### Possible future improvements
-
-- Add a set of repeatable evaluation examples and track model performance over time.
-- Support policy files and source references in addition to pasted text.
-- Add a review history with appropriate privacy and retention controls.
-- Compare different LLMs and prompts using a labelled evaluation dataset.
-
-## 12. Project links
-
-- **Live application:** [https://cynbit.streamlit.app/](https://cynbit.streamlit.app/)
-- **Source code:** This GitHub repository
+- Domain-specific dataset preparation.
+- Language model domain alignment.
+- Model deployment.
+- API-based inference integration.
+- Streamlit application development.
+- Model response evaluation.
 
 ---
 
-**Built as an AI/ML Engineer Intern assessment project for Cynbit Technologies.**
+**Assignment Platform:** Nugen Intelligence  
+**Project:** Northsas IT Support Assistant  
+**Company represented in the demo:** Northsas Example Company (Fictional)  
+**Base Model:** Qwen2.5-1.5B-Instruct  
+**Application Framework:** Streamlit  
+**Programming Language:** Python
