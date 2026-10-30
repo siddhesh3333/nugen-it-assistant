@@ -1,0 +1,27 @@
+[
+  {
+    "id": "password_reset",
+    "category": "Account access",
+    "question": "I forgot my account password. What should I do according to the Northstar IT support guidance?"
+  },
+  {
+    "id": "mfa_device",
+    "category": "Account security",
+    "question": "I lost access to my MFA or authenticator device. What does the Northstar guidance say I should do?"
+  },
+  {
+    "id": "vpn_certificate",
+    "category": "VPN troubleshooting",
+    "question": "My VPN certificate is invalid and I cannot connect. What troubleshooting steps are documented?"
+  },
+  {
+    "id": "ticket_information",
+    "category": "IT service tickets",
+    "question": "What information should I provide when submitting an IT support ticket?"
+  },
+  {
+    "id": "unknown_contact",
+    "category": "Unknown information / abstention",
+    "question": "What is the Northstar IT helpdesk phone number? Only answer if that number is explicitly provided in the IT support guidance."
+  }
+]
