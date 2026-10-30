@@ -1,7 +1,7 @@
 # Domain-Aligned IT Support Assistant Using Nugen Intelligence
 
-An end-to-end domain alignment project developed as part of a technical assignment provided by **Nugen Intelligence**.
-
+An end-to-end domain alignment project developed as part of a technical assignment provided by **Nugen Intelligence**. **[Access the Live Application Here](https://northsas.streamlit.app/)**
+ 
 The project demonstrates how a base language model can be adapted for a specific business domain using company-specific documentation, deployed through the Nugen platform, and integrated into a Streamlit application for interactive inference.
 
 > **Important clarification:** Nugen Intelligence is the actual company that provided this technical assignment and its platform for completing the task. Northsas Example Company is a fictional company created exclusively for this demonstration. It does not represent a real organization or an actual Nugen customer.
@@ -14,8 +14,7 @@ For this demonstration, I selected the IT support domain and created a fictional
 
 In a typical organization, employees may require assistance with:
 
-- Password resets and account access.
-- Account lockout issues.
+
 - VPN connectivity problems.
 - Device troubleshooting.
 - Software installation requests.
